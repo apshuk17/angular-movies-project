@@ -1,0 +1,14 @@
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-card {
+    width: 25%;
+}
+.login-form-card .mat-form-field{
+    width: 100%;
+}
+.form-control-submit {
+    text-align: center;
+}

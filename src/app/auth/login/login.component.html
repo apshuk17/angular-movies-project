@@ -1,0 +1,24 @@
+<div class="login-form-container">
+    <mat-card class="mat-elevation-z10 login-form-card">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-control">
+            <mat-form-field>
+              <input matInput [formControlName]="'email'" placeholder="Email" required>
+              <mat-error *ngIf="loginForm.get('email').invalid">Invalid</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-control">
+            <mat-form-field>
+              <input matInput type="password" [formControlName]="'password'" placeholder="Password" required>
+              <mat-error *ngIf="loginForm.get('password').invalid">Invalid</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-control-submit">
+          <button type="submit" mat-raised-button color="accent">Submit</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  
+  <p>Form value: {{ loginForm.value | json }}</p>
+  <p>Form status: {{ loginForm.status | json }}</p>

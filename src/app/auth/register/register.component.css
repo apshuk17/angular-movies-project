@@ -1,0 +1,17 @@
+.register-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-form-card {
+    width: 25%;
+}
+.register-form-card .mat-form-field{
+    width: 100%;
+}
+.form-control {
+    margin-bottom: 10px;
+}
+.form-control-submit {
+    text-align: center;
+}

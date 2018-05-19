@@ -1,0 +1,25 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+</button>
+
+<mat-menu #menu>
+  <button mat-menu-item>
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+
+  <button mat-menu-item [routerLink]="[{outlets: { 'primary': ['auth', 'register']}}]">
+      <mat-icon>person_account</mat-icon>
+      <span>Register</span>
+  </button>
+
+  <button mat-menu-item [routerLink]="[{outlets: { 'primary': ['auth', 'login']}}]">
+      <mat-icon>account_circle</mat-icon>
+      <span>Login</span>
+  </button>
+
+  <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>Logout</span>
+  </button>
+</mat-menu>

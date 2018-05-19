@@ -1,0 +1,35 @@
+<div class="register-form-container">
+  <mat-card class="mat-elevation-z10 register-form-card">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+          <mat-form-field>
+            <input matInput [formControlName]="'name'" placeholder="Name" required>
+            <mat-error *ngIf="registerForm.get('name').invalid">Invalid</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-control">
+          <mat-form-field>
+            <input matInput [formControlName]="'email'" placeholder="Email" required>
+            <mat-error *ngIf="registerForm.get('email').invalid">Invalid</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-control">
+          <mat-form-field>
+            <input matInput type="password" [formControlName]="'password'" placeholder="Password" required>
+            <mat-error *ngIf="registerForm.get('password').invalid">Invalid</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-control">
+        <mat-checkbox [formControlName]="'isAdmin'">Select, if you're an Admin.</mat-checkbox>
+      </div>
+      <div class="form-control-submit">
+        <button [disabled]="!registerForm.valid" type="submit" mat-raised-button color="accent">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+<p>Registered User: {{ registerUserEmail$ | async }}</p>
+
+<p>Form value: {{ registerForm.value | json }}</p>
+<p>Form status: {{ registerForm.status | json }}</p>
