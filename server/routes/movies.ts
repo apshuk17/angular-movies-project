@@ -2,12 +2,32 @@ import * as express from 'express';
 import { Router } from 'express';
 import * as mongoose from 'mongoose';
 import * as _ from 'lodash';
+import { ServerResponse } from 'http';
 
 const Joi = require('joi');
 
 const router = express.Router();
 
 const { Movie, validateGenre, validateGenreWithId } = require('../models/movies');
+
+// Get all distinct genres
+router.get('/genres', async (req, res) => {
+    const genresAll = await Movie.distinct('genres');
+    const activeGenres = genresAll.slice(0, 4);
+    const movieCountGenre = [];
+
+    async function processArray(genreArray, resultArray) {
+        // map array to promises
+        const promises = genreArray.map(async genre => {
+            const moviesSelected = await Movie.find({genres: genre, year: {$gte: 2005, $lte: 2010}});
+            const moviesCount = moviesSelected.length;
+            resultArray.push({ genre, moviesSelected, moviesCount });
+        });
+        await Promise.all(promises);
+        res.status(200).send(resultArray);
+    }
+    await processArray(activeGenres, movieCountGenre);
+});
 
 // Get movies by genre
 router.get('/:genre', async (req, res) => {

@@ -10,12 +10,19 @@ import { CustomMaterialModule } from './custom-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { TopMenuComponent } from './header/top-menu/top-menu.component';
+import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { DemoComponent } from './demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +30,10 @@ import { TopMenuComponent } from './header/top-menu/top-menu.component';
     ReactiveFormsModule,
     HttpClientModule,
     CustomMaterialModule,
+    AdminModule,
+    UserModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     AppRoutingModule
   ],
   providers: [],

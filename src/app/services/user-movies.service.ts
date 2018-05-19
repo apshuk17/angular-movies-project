@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { GenreMovieDetails } from '../dashboard/store/states';
 
 @Injectable()
 export class UserMoviesService {
@@ -41,5 +42,9 @@ export class UserMoviesService {
         });
       })
     );
+  }
+
+  getGenresMoviesData() {
+    return this.http.get<GenreMovieDetails[]>('/api/movies/genres');
   }
 }

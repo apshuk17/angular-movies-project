@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
     countries: [ String ],
     genres: {
         type: [ String ],
-        enum: ['crime', 'adventure', 'drama']
+        enum: ['action', 'comedy', 'western', 'crime']
     },
     director: String,
     writers: [ String ],
